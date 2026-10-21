@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+  <p>Excluir a tarefa "{{ object.titulo }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+    <a href="{% url 'lista' %}">Cancelar</a>
+  </form>
+{% endblock %}

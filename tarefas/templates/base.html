@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciaddor de Tarefas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'tarefas/estilo.css' %}">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <strong>Minhas Tarefas</strong>
+      {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <span>Olá, {{ user.username }}</span>
+          <button type="submit" class="btn-suave">Sair</button>
+        </form>
+      {% endif %}
+    </nav>
+    <div class="card">
+      {% block conteudo %}{% endblock %}
+    </div>
+  </div>
+</body>
+</html>
